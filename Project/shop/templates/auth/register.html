@@ -1,0 +1,37 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{% block title %}
+    Log In
+{% endblock title %}
+
+{% block container %}
+        <div class="main-content space-padding-tb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <div class="customer-page">
+                            <div class="title-page">
+                                <h3>Register</h3>
+                            </div>
+                            <form method="post" action="{% url 'register' %}" class="form-customer form-login">
+                                {% csrf_token %}
+                                {% for field in user_form %}
+                                <div class="form-group">
+                                    {{ field.errors }}
+                                    {{ field.label_teg }}
+                                    {{ field }}
+                                </div>
+                                {% endfor %}
+                                <div class="form-check">
+                                    <button type="submit" class="btn-login btn-register hover-white">Register</button>
+                                </div>
+                            </form>
+                            <span class="divider"></span>
+                            <a href="/auth/login" class="btn link-button create-account hover-black">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock container %}
